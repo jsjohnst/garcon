@@ -1,21 +1,20 @@
-var g = require('./lib/garçon');
-    
-var project = new g.Project();
+var g = require('./lib/garçon'),
+    server = new g.Server(),
+    myApp;
 
-project.setDirectory('../my_app');
+myApp = server.addApp({ name: 'myApp', theme: 'my_theme' });
 
-project.addSproutcore();
+myApp.addSproutcore();
 
-project.addFrameworks(
-  { path:'frameworks/calendar' },
-  { path:'themes/my_theme' }
+myApp.addFrameworks(
+  { path: 'frameworks/calendar' },
+  { path:'themes/my_theme' },
+  { path: 'apps/ct', buildLanguage: 'french', preferredLanguage: 'french' }
 );
 
-project.setApp({ path:'apps/my_app', theme: 'my_theme' });
+myApp.htmlHead = '<title>My App</title>';
 
-project.htmlHead = '<title>My App</title>';
-
-project.htmlBody = [
+myApp.htmlBody = [
   '<div id="loading">',
     '<p id="loading">',
 	    'Loading…',
@@ -23,5 +22,5 @@ project.htmlBody = [
   '</div>'
 ].join('\n');
 
-project.build();
-project.run();
+myApp.build();
+server.run();
