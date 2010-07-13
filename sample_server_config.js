@@ -21,8 +21,12 @@ myApp.addFrameworks(
   // a third party framework
   { path: 'frameworks/calendar' },
   
-  // a custom theme
-  { path: 'themes/my_theme' },
+  // the theme you're using
+  { path:'frameworks/sproutcore/themes/standard_theme', combineScripts: true },
+  
+  // if you're on Quilmes and use Ace, uncomment the next 2 lines instead
+  // { path:'frameworks/sproutcore/themes/empty_theme', combineScripts: true },
+  // { path:'frameworks/sproutcore/themes/ace', combineScripts: true },
   
   // finally, the sources for myApp must be added as well
   { path: 'apps/my_app' }
