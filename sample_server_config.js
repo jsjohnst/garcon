@@ -43,7 +43,9 @@ myApp.htmlBody = [
 ].join('\n');
 
 // build the app
-myApp.build();
-
-// run the server
-server.run();
+myApp.build(function() {
+  
+  // run the server
+  server.run();
+  
+});
