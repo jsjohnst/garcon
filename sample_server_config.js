@@ -4,12 +4,12 @@ var g = require('./lib/garçon'),
 // create a server which will listen on port 8000 by default
 server = new g.Server();
 
-// adding an application named 'myApp' tells the server to respond to
-// the /myApp url and to create a myApp.html file when saving
+// adding an application named 'myapp' tells the server to respond to
+// the /myapp url and to create a myapp.html file when saving
 myApp = server.addApp({
-  name: 'myApp',
-  theme: 'my_theme',
-  buildLanguage: 'french'
+  name: 'myapp',
+  theme: 'sc-theme',
+  buildLanguage: 'english'
 });
 
 // myApp needs SproutCore to run
@@ -19,7 +19,7 @@ myApp.addSproutcore();
 myApp.addFrameworks(
   
   // a third party framework
-  { path: 'frameworks/calendar' },
+  // { path: 'frameworks/calendar' },
   
   // the theme you're using
   { path:'frameworks/sproutcore/themes/standard_theme', combineScripts: true },
@@ -29,7 +29,7 @@ myApp.addFrameworks(
   // { path:'frameworks/sproutcore/themes/ace', combineScripts: true },
   
   // finally, the sources for myApp must be added as well
-  { path: 'apps/my_app' }
+  { path: 'apps/' + myApp.name }
 );
 
 // add some html for inside the <head> tag
